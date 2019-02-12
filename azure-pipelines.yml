@@ -16,22 +16,23 @@ variables:
 
 steps:
 - script: dotnet restore
+  displayName: dotnet restore
+
 - script: dotnet build
-- script: dotnet test
-#- task: NuGetToolInstaller@0
+  displayName: dotnet build
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution)'
+# - script: dotnet test
+  # displayName: dotnet test
 
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+# TODO: Publish test results
 
-# - task: VSTest@2
+- script: dotnet pack
+  displayName: dotnet pack
+
+# publish build artifacts to drop folder so we can use them for release
+# - task: PublishBuildArtifacts@1
 #   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+#     PathtoPublish: "_build"
+#     ArtifactName: "drop"
+#     ArtifactType: "Container"
+#   displayName: Publish build artifacts

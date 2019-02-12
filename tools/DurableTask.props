@@ -2,13 +2,13 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <!-- Build Settings -->
-    <!-- Temporarily remove this to get things building. -->
-    <!--<DebugType Condition="'$(Configuration)'=='Release'">pdbonly</DebugType>-->
+    <DebugType Condition="'$(Configuration)'=='Release'">pdbonly</DebugType>
     <DebugSymbols>True</DebugSymbols>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
     <!-- Code Analysis Settings -->
-    <RunCodeAnalysis>True</RunCodeAnalysis>
+    <!-- Temporarily remove this to get things building. -->
+    <!--<RunCodeAnalysis>True</RunCodeAnalysis>-->
     <RunCodeAnalysis Condition=" '$(Configuration)' == 'Debug' ">False</RunCodeAnalysis>
     <!-- Disable code analysis for netstandard2.0: https://github.com/dotnet/core/issues/758 -->
     <RunCodeAnalysis Condition=" '$(TargetFramework)' == 'netstandard2.0'">False</RunCodeAnalysis>

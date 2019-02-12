@@ -30,9 +30,9 @@ steps:
   displayName: dotnet pack
 
 # publish build artifacts to drop folder so we can use them for release
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     PathtoPublish: "_build"
-#     ArtifactName: "drop"
-#     ArtifactType: "Container"
-#   displayName: Publish build artifacts
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: "build_output"
+    ArtifactName: "drop"
+    ArtifactType: "Container"
+  displayName: Publish build artifacts
